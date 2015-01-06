@@ -1,5 +1,11 @@
 require 'prime'
 
+def primedays?(day1,day2) 
+  if day1.prime? and day2.prime? then
+    print "#{day1} and #{day2} are prime numbers.\n"
+  end
+end
+
 if (ARGV.length == 0 || ARGV.length > 2) then
   print "Make a listing of continuous prime days.\n"
   print "Usage: #{$0} <year>\n"
@@ -26,15 +32,7 @@ end
     days = [[131,201], [331,401], [531,601], [731,801], [831,901], [1031, 1101]]
   end
   days.each do |day|
-    day1 = year * 10000 + day[0]
-    day2 = year * 10000 + day[1]
-    if day1.prime? and day2.prime? then
-      print "#{day1} and #{day2} are prime numbers.\n"
-    end
+    primedays?(year * 10000 + day[0],  year * 10000 + day[1])
   end
-  day1 = year * 10000 + 1231
-  day2 = (year+1) * 10000 + 101
-  if day1.prime? and day2.prime? then
-    print "#{day1} and #{day2} are prime numbers.\n"
-  end
+  primedays?(year * 10000 + 1231, (year+1) * 10000 + 101)
 end
